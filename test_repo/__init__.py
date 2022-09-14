@@ -17,6 +17,6 @@ def add(a: int, b: int) -> int:
 
 
 def forloop():
-    for i in range(0, 10):
+    for i in range(10):
         if i > 5:
             return True
