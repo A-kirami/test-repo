@@ -12,15 +12,8 @@ class A:
         ...
 
 
-def add(a: int, b: int) -> bool:
+def add(a: int, b: int) -> int:
     return a + b
 
 
-add("1", 2)
-
-a = A()
-
-
-def wrong_callable():
-    if hasattr(a, "__call__"):
-        return a()
+add(1, 2)
