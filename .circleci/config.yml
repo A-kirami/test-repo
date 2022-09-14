@@ -7,7 +7,7 @@ version: 2.1
 orbs:
   python: circleci/python@2.1.0
   codecov: codecov/codecov@3.2.3
-  coverage: codacy/coverage-reporter@13.10.14
+  codacy: codacy/coverage-reporter@13.10.14
   deepsource: deepsource/test-coverage@1.1.0
 
 # Define a job to be invoked later in a workflow.
@@ -22,23 +22,22 @@ jobs:
     steps:
       - checkout
       - run:
-          name: update poetry
+          name: Update poetry
           command: |
             poetry self update
       - python/install-packages:
           pkg-manager: poetry
       - run:
-          name: Test it
+          name: Test code coverage
           command: |
             poetry install --with test
             poetry run pytest
       - codecov/upload:
           file: coverage.xml
           flags: unittests
-      - coverage/send_report:
+      - codacy/send_report:
           coverage-reports: coverage.xml
           project-token: $CODACY_PROJECT_TOKEN
-          skip: true
       - deepsource/report:
           coverage-file: coverage.xml
           dsn: $DEEPSOURCE_DSN
