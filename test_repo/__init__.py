@@ -7,7 +7,7 @@ class A:
     def __test__(self):
         ...
 
-    def test():
+    def test(self):
         ...
 
 
