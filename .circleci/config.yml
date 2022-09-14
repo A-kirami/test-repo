@@ -26,7 +26,9 @@ jobs:
       - run:
           name: Test it
           command: |
-            poetry run pytest --version
+            poetry self update
+            poetry install --with test
+            poetry run pytest
       - codecov/upload:
           file: coverage.xml
           flags: unittests
