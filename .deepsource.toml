@@ -12,3 +12,6 @@ dependency_file_paths = [
   "pyproject.toml",
   "poetry.lock"
 ]
+
+[analyzers.meta]
+type_checker = "mypy"
