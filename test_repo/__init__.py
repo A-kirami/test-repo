@@ -10,5 +10,5 @@ def add(a: int, b: int) -> int:
     return a + b
 
 
-def union(a: str, b: str):
+def union(a: str, b: str) -> str:
     return a + b
