@@ -2,25 +2,49 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
+# Orbs are reusable packages of CircleCI configuration that you may share across projects, enabling you to create encapsulated, parameterized commands, jobs, and executors that can be used across multiple projects.
+# See: https://circleci.com/docs/2.0/orb-intro/
+orbs:
+  python: circleci/python@2.1.0
+  codecov: codecov/codecov@3.2.3
+  coverage: codacy/coverage-reporter@13.10.14
+  deepsource: deepsource/test-coverage@1.1.0
+
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  say-hello:
-    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
-    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
+  unittests: # This is the name of the job, feel free to change it to better match what you're trying to do!
+    parameters:
+      python-version:
+        type: string
     docker:
-      - image: cimg/base:stable
-    # Add steps to the job
-    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+      - image: cimg/python:<< parameters.python-version >>
     steps:
       - checkout
+      - python/install-packages:
+          pkg-manager: poetry
       - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
+          name: Test it
+          command: |
+            poetry run pytest --version
+      - codecov/upload:
+          file: coverage.xml
+          flags: unittests
+      - coverage/send_report:
+          coverage-reports: coverage.xml
+          project-token: $CODACY_PROJECT_TOKEN
+          skip: true
+      - deepsource/report:
+          coverage-file: coverage.xml
+          dsn: $DEEPSOURCE_DSN
+          key: python
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  say-hello-workflow:
+  all-tests:
     jobs:
-      - say-hello
+      - unittests:
+          matrix:
+            parameters:
+              python-version: ["3.8", "3.9", "3.10"]
