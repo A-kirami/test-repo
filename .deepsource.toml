@@ -12,14 +12,3 @@ dependency_file_paths = [
   "pyproject.toml",
   "poetry.lock"
 ]
-
-[analyzers.meta]
-type_checker = "mypy"
-
-[[transformers]]
-name = "black"
-enabled = true
-
-[[transformers]]
-name = "isort"
-enabled = true
