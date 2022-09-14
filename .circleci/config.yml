@@ -13,7 +13,7 @@ orbs:
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  unittests: # This is the name of the job, feel free to change it to better match what you're trying to do!
+  unittests-python: # This is the name of the job, feel free to change it to better match what you're trying to do!
     parameters:
       python-version:
         type: string
@@ -46,9 +46,9 @@ jobs:
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  all-tests:
+  CodeTests:
     jobs:
-      - unittests:
+      - unittests-python:
           matrix:
             parameters:
               python-version: ["3.8", "3.9", "3.10"]
