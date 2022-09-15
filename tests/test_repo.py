@@ -1,4 +1,4 @@
-from test_repo import A, add
+from test_repo import A, add, union
 
 
 def test_A():
@@ -8,3 +8,7 @@ def test_A():
 
 def test_add():
     assert add(1, 2) == 3
+
+
+def test_union():
+    assert union("a", "b") == "ab"
