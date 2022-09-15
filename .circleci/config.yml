@@ -32,10 +32,12 @@ jobs:
           command: |
             poetry install --with test
             poetry run pytest
+      - store_test_results:
+          path: coverage.xml
       - codecov/upload:
           file: coverage.xml
           flags: unittests
-          upload_name: 'python-<< parameters.python-version >>'
+          upload_name: << parameters.python-version >>
       - codacy/send_report:
           coverage-reports: coverage.xml
           project-token: $CODACY_PROJECT_TOKEN
