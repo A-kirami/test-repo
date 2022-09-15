@@ -28,9 +28,12 @@ jobs:
       - python/install-packages:
           pkg-manager: poetry
       - run:
-          name: Test code coverage
+          name: Install test dependencies
           command: |
             poetry install --with test
+      - run:
+          name: Test code coverage
+          command: |
             poetry run pytest
       - store_test_results:
           path: results.xml
