@@ -85,6 +85,8 @@ pull_request_rules:
       queue:
         name: default
         method: squash
+        commit_message_template: >
+          {{ title }}
 
   - name: 在 PR 意外取消排队时通知
     conditions:
