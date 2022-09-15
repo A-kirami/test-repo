@@ -33,7 +33,7 @@ jobs:
             poetry install --with test
             poetry run pytest
       - store_test_results:
-          path: report.xml
+          path: test-results
       - codecov/upload:
           file: coverage.xml
           flags: unittests

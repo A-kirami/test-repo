@@ -34,7 +34,7 @@ profile = 'black'
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
-addopts = "--ignore=__pypackages__ --cov=test_repo --cov-report=html --cov-report=xml --junit-xml=report.xml --cov-report=term-missing --alluredir=allure_report --clean-alluredir"
+addopts = "--cov=test_repo --cov-report=html --cov-report=xml --junit-xml=test-results/junit.xml --cov-report=term-missing --alluredir=allure_report --clean-alluredir"
 
 [build-system]
 requires = ["poetry-core"]
