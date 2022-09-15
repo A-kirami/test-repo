@@ -1,4 +1,4 @@
-from test_repo import A, add, union
+from test_repo import A, add, forloop, union
 
 
 def test_A():
@@ -12,3 +12,7 @@ def test_add():
 
 def test_union():
     assert union("a", "b") == "ab"
+
+
+def test_forloop():
+    assert forloop([1, 2, 3]) == sum([1, 2, 3])
