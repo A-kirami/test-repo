@@ -26,6 +26,7 @@ pull_request_rules:
 
   - name: CI 代码测试通过时请求审查
     conditions:
+      - -closed
       - check-success=CodeTests
       - -author~=^.*\[bot\]$
     actions:
