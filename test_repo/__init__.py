@@ -12,3 +12,7 @@ def add(a: int, b: int) -> int:
 
 def union(a: str, b: str) -> str:
     return a + b
+
+
+def noreturn():
+    raise RuntimeError
