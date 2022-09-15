@@ -1,3 +1,6 @@
+from typing import List
+
+
 class A:
     def __init__(self, text: str) -> None:
         self.text = text
@@ -18,7 +21,7 @@ def noreturn():
     raise RuntimeError
 
 
-def forloop(iter: list[int]):
+def forloop(iter: List[int]):
     all = 0
     for i in iter:
         all += i
