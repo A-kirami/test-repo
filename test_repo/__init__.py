@@ -22,4 +22,4 @@ def noreturn():
 
 
 def forloop(iter: List[int]):
-    all = sum(iter)
+    return sum(iter)
