@@ -1,0 +1,128 @@
+queue_rules:
+  - name: default
+    conditions: []
+
+pull_request_rules:
+  - name: 合并后删除分支
+    conditions:
+      - merged
+    actions:
+      delete_head_branch:
+
+  - name: 移除过时的审查评论
+    conditions:
+      - author!=A-kirami
+    actions:
+      dismiss_reviews:
+
+  - name: 发布 PR 时分配受理人
+    conditions:
+      - -closed
+      - -author~=^.*\[bot\]$
+    actions:
+      assign:
+        add_users:
+          - A-kirami
+
+  - name: CI 代码测试通过时请求审查
+    conditions:
+      - check-success=CodeTests
+      - -author~=^.*\[bot\]$
+    actions:
+      request_reviews:
+        users:
+          - A-kirami
+
+  - name: CI 代码测试失败
+    conditions:
+      - check-success=CodeTests
+    actions:
+      comment:
+          message: "@{{author}} 这个拉取请求未通过代码测试, 请查看状态检查中的详细报告并修复问题"
+
+  - name: CI 测试覆盖率失败
+    conditions:
+      - or:
+        - "check-failure=DeepSource: Test coverage"
+        - "check-failure=Codacy Coverage Report"
+        - check-failure~=^codecov\/.*
+    actions:
+        comment:
+          message: "@{{author}} 合并这个拉取请求将会导致代码覆盖率下降, 请查看状态检查中的详细报告并补充测试"
+
+  - name: CI 静态分析失败
+    conditions:
+      - or:
+        - "check-failure=DeepSource: Python"
+        - "check-failure=Codacy Static Code Analysis "
+    actions:
+        comment:
+          message: "@{{author}} 这个拉取请求中存在代码质量问题, 请查看状态检查中的详细报告并修复问题"
+
+  - name: 审查通过后加入合并队列
+    conditions:
+      - "#approved-reviews-by>=1"
+      - "#review-requested=0"
+      - "#changes-requested-reviews-by=0"
+      - approved-reviews-by=A-kirami
+      - check-success=CodeTests
+    actions:
+      queue:
+        name: default
+        method: squash
+
+  - name: 在 PR 意外取消排队时通知
+    conditions:
+      - 'check-failure=Queue: Embarked in merge train'
+    actions:
+      comment:
+        message: >
+          @{{ author }}，此请求未能合并，已从合并队列中退出。
+          如果您认为您的 PR 在合并队列中失败是因为奇怪的测试，可以通过评论'@mergifyio requeue'来重新排队。
+          更多细节可以在 "Queue: Embarked in merge train" 检查运行中找到。
+
+  - name: 要求解决冲突
+    conditions:
+      - conflict
+    actions:
+        comment:
+          message: "@{{author}} 这个 PR 中发生了冲突, 请解决此冲突"
+        label:
+          add:
+            - conflict
+
+  - name: 解决冲突后移除 conflict 标签
+    conditions:
+      - -conflict
+    actions:
+      label:
+        remove:
+          - conflict
+
+  # - name: 欢迎初次贡献
+  #   conditions:
+  #     - author!=@regularcontributors
+  #   actions:
+  #       comment:
+  #         message: |
+  #             👋 欢迎来到这个项目!
+  #             我们很高兴你能成为我们中的一员 💘
+  #             如果这是你的第一次 PR 贡献, 请查看此文档了解我们的处理流程
+
+  - name: 合并后感谢贡献者
+    conditions:
+      - merged
+      - author!=A-kirami
+      - -author~=^.*\[bot\]$
+    actions:
+      comment:
+        message: "@{{author}} 此 PR 已合并, 感谢你做出的贡献!"
+
+  - name: 自动批准来自 Bot 的拉取请求
+    conditions:
+      - author~=^.*\[bot\]$
+      - check-success=CodeTests
+    actions:
+      queue:
+        name: default
+        method: squash

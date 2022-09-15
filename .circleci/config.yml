@@ -42,7 +42,7 @@ jobs:
       - codecov/upload:
           file: coverage.xml
           flags: unittests
-          upload_name: "<< parameters.python-version >>"
+          upload_name: python-<< parameters.python-version >>
       - codacy/send_report:
           coverage-reports: coverage.xml
           project-token: $CODACY_PROJECT_TOKEN
