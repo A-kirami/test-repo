@@ -17,6 +17,7 @@ pull_request_rules:
 
   - name: 发布 PR 时分配受理人
     conditions:
+      - -merged
       - -closed
       - -author~=^.*\[bot\]$
     actions:
@@ -26,6 +27,8 @@ pull_request_rules:
 
   - name: CI 代码测试通过时请求审查
     conditions:
+      - -merged
+      - -closed
       - check-success=CodeTests
       - -author~=^.*\[bot\]$
     actions:
