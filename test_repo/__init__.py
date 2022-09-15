@@ -16,3 +16,9 @@ def union(a: str, b: str) -> str:
 
 def noreturn():
     raise RuntimeError
+
+
+def forloop(iter: list[int]):
+    all = 0
+    for i in iter:
+        all += i
