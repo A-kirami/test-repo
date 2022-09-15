@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, NoReturn
 
 
 class A:
@@ -17,9 +17,9 @@ def union(a: str, b: str) -> str:
     return a + b
 
 
-def noreturn():
+def noreturn() -> NoReturn:
     raise RuntimeError
 
 
-def forloop(iter: List[int]) -> int:
+def forloop(iter: list[int]) -> int:
     return sum(iter)
