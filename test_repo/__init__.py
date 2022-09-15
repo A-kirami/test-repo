@@ -21,5 +21,5 @@ def noreturn() -> NoReturn:
     raise RuntimeError
 
 
-def forloop(iter: list[int]) -> int:
+def forloop(iter: List[int]) -> int:
     return sum(iter)
