@@ -30,6 +30,7 @@ pull_request_rules:
       - -merged
       - -closed
       - check-success=CodeTests
+      - -author=A-kirami
       - -author~=^.*\[bot\]$
     actions:
       request_reviews:
@@ -62,13 +63,25 @@ pull_request_rules:
         comment:
           message: "@{{author}} 这个拉取请求中存在代码质量问题, 请查看状态检查中的详细报告并修复问题"
 
+  - name: 所有者直接加入合并队列
+    conditions:
+      - author=A-kirami
+    actions:
+      review:
+        type: APPROVE
+        message: Automatically approving all changes
+
   - name: 审查通过后加入合并队列
     conditions:
       - "#approved-reviews-by>=1"
       - "#review-requested=0"
       - "#changes-requested-reviews-by=0"
-      - approved-reviews-by=A-kirami
       - check-success=CodeTests
+      - or:
+        - author=A-kirami
+        - and:
+          - author!=A-kirami
+          - approved-reviews-by=A-kirami
     actions:
       queue:
         name: default
@@ -115,7 +128,7 @@ pull_request_rules:
   - name: 合并后感谢贡献者
     conditions:
       - merged
-      - author!=A-kirami
+      - -author=A-kirami
       - -author~=^.*\[bot\]$
     actions:
       comment:
