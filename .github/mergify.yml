@@ -35,7 +35,7 @@ pull_request_rules:
 
   - name: CI 代码测试失败
     conditions:
-      - check-success=CodeTests
+      - check-failure=CodeTests
     actions:
       comment:
           message: "@{{author}} 这个拉取请求未通过代码测试, 请查看状态检查中的详细报告并修复问题"
