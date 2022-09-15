@@ -41,6 +41,7 @@ pull_request_rules:
     conditions:
       - check-failure=CodeTests
     actions:
+      dismiss_reviews:
       comment:
           message: "@{{author}} 这个拉取请求未通过代码测试, 请查看状态检查中的详细报告并修复问题"
 
@@ -66,6 +67,7 @@ pull_request_rules:
   - name: 批准所有者的一切更改
     conditions:
       - author=A-kirami
+      - check-success=CodeTests
     actions:
       review:
         type: APPROVE
@@ -95,7 +97,7 @@ pull_request_rules:
       comment:
         message: >
           @{{ author }}，此请求未能合并，已从合并队列中退出。
-          如果您认为您的 PR 在合并队列中失败是因为奇怪的测试，可以通过评论'@mergifyio requeue'来重新排队。
+          如果您认为您的 PR 在合并队列中失败是因为奇怪的测试，可以通过评论'@mergifyio requeue'来重新加入队列。
           更多细节可以在 "Queue: Embarked in merge train" 检查运行中找到。
 
   - name: 要求解决冲突
@@ -135,7 +137,7 @@ pull_request_rules:
       comment:
         message: "@{{author}} 此 PR 已合并, 感谢你做出的贡献!"
 
-  - name: 自动批准来自 Bot 的拉取请求
+  - name: 自动合并来自 Bot 的拉取请求
     conditions:
       - author~=^.*\[bot\]$
       - check-success=CodeTests
