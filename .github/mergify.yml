@@ -64,10 +64,11 @@ pull_request_rules:
         comment:
           message: "@{{author}} 这个拉取请求中存在代码质量问题, 请查看状态检查中的详细报告并修复问题"
 
-  - name: 批准所有者的一切更改
+  - name: 所有者添加批准标签后加入合并队列
     conditions:
       - author=A-kirami
       - check-success=CodeTests
+      - label=approve
     actions:
       review:
         type: APPROVE
