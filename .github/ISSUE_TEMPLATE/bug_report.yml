@@ -80,7 +80,7 @@ body:
     id: logs
     attributes:
       label: 日志信息
-      description: 提供有助于诊断问题的任何日志。如果拥有错误信息，请附带完整的错误信息。
+      description: 提供有助于诊断问题的任何日志和完整的错误信息。
       placeholder: 请注意将您的敏感信息从日志中过滤或替换。
 
   - type: textarea
