@@ -87,4 +87,4 @@ body:
     id: context
     attributes:
       label: 额外补充
-      description: 还有什么要补充的吗？在此处添加有关问题的任何附加信息。
+      description: 还有什么要补充的吗？在此处添加相关的任何其他上下文或截图，或者你觉得有帮助的信息。
