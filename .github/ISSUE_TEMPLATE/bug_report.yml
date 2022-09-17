@@ -55,9 +55,9 @@ body:
   - type: textarea
     id: reproduction
     attributes:
-      label: 复现步骤
+      label: 重现步骤
       description: |
-        提供能复现此问题的详细操作步骤。如果可能，请尝试提供一个可重现的测试用例，该测试用例是发生问题所需的最低限度。
+        提供能重现此问题的详细操作步骤。如果可能，请尝试提供一个可重现的测试用例，该测试用例是发生问题所需的最低限度。
         推荐阅读：[《如何创建一个最小的、可重现的示例》](https://stackoverflow.com/help/minimal-reproducible-example)
       placeholder: |
         1. 首先……
