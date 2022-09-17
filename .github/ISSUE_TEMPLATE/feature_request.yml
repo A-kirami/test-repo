@@ -1,4 +1,4 @@
-name: ✨ 功能提议
+name: ✨ 功能需求
 title: "[Feature]: "
 description: 为项目提出一个新的想法或建议
 labels: ["enhancement"]
@@ -25,9 +25,9 @@ body:
       options:
         - label: 我已仔细阅读并了解上述注意事项。
           required: true
-        - label: 我确定本项目的议题列表中没有相同或相似的提议。
+        - label: 我确定本项目的议题列表中没有相同或相似的需求。
           required: true
-        - label: 我愿意帮助实现此功能。（这会将您指定为此提议的受理人并自动创建特性分支）
+        - label: 我愿意帮助实现此功能。（这会将您指定为此需求的受理人并自动创建特性分支）
 
   - type: textarea
     id: problem
@@ -63,4 +63,4 @@ body:
     id: context
     attributes:
       label: 额外补充
-      description: 还有什么要补充的吗？在此处添加有关提议的任何附加信息。
+      description: 还有什么要补充的吗？在此处添加有关需求的任何附加信息。
