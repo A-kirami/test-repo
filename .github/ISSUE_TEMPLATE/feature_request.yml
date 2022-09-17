@@ -27,7 +27,7 @@ body:
           required: true
         - label: 我确定本项目的议题列表中没有相同或相似的提议。
           required: true
-        - label: 我愿意帮助实现此特性。（这会将您指定为此问题的受理人并自动创建特性分支）
+        - label: 我愿意帮助实现此特性。（这会将您指定为此请求的受理人并自动创建特性分支）
 
   - type: textarea
     id: problem

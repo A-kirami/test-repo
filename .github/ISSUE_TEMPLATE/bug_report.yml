@@ -29,11 +29,11 @@ body:
           required: true
         - label: 我使用最新版本测试过，确定问题依旧存在。
           required: true
-        - label: 我确定本项目的议题列表中没有相同或相似的问题。
+        - label: 我确定此项目的议题列表中没有相同或相似的问题。
           required: true
-        - label: 我确定这是本项目的问题, 而不是正在使用的其他东西。
+        - label: 我确定这是此项目的问题, 而不是正在使用的其他东西。
           required: true
-        - label: 我愿意帮助改进此问题。（这会将您指定为此问题的受理人并自动创建修复分支）
+        - label: 我愿意帮助修复此问题。（这会将您指定为此问题的受理人并自动创建修复分支）
 
   - type: input
     id: version
