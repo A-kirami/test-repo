@@ -1,4 +1,6 @@
-from test_repo import A, add, forloop, union
+import pytest
+
+from test_repo import A, add, forloop, noreturn, union
 
 
 def test_A():
@@ -16,3 +18,8 @@ def test_union():
 
 def test_forloop():
     assert forloop([1, 2, 3]) == sum([1, 2, 3])
+
+
+def test_noreturn():
+    with pytest.raises(RuntimeError):
+        noreturn()
