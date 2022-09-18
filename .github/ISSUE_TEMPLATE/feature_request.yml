@@ -54,7 +54,7 @@ body:
   - type: textarea
     id: usecase
     attributes:
-      label: 建议的功能是什么样的？
+      label: 实现的功能是什么样的？
       description: |
         提供功能在实现后如何使用的代码示例。请注意，您可以使用 Markdown 来设置代码块的格式。
         尽可能多地提供细节。您希望它如何使用的示例代码会有所帮助。
