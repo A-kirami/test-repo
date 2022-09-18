@@ -7,13 +7,13 @@ body:
     attributes:
       value: |
         ## 注意事项
-        议题列表专门用于错误报告和功能需求，这意味着我们不接受使用问题。如果您打开的问题不符合要求，它将会被无条件关闭。
+        [GitHub Issues](../issues) 专门用于错误报告和功能需求，这意味着我们不接受使用问题。如果您打开的问题不符合要求，它将会被无条件关闭。
 
         有关使用问题，请通过以下方法：
         - 阅读文档以解决
-        - 在 discussions 上提问
-        - 在网络中搜索是否有人问过类似的问题
         - 在社区内寻求他人解答
+        - 在 [Discussions](../discussions) 上提问
+        - 在网络中搜索是否有人遇到过类似的问题
 
         最后，请记得遵守我们的社区准则，要友好交流。
 
@@ -25,7 +25,7 @@ body:
       options:
         - label: 我已仔细阅读并了解上述注意事项。
           required: true
-        - label: 我确定本项目的议题列表中没有相同或相似的需求。
+        - label: 我确定本项目的[ GitHub Issues ](../issues)中没有相同或相似的需求。
           required: true
         - label: 我愿意帮助实现此功能。（这会将您指定为此需求的受理人并自动创建特性分支）
 
@@ -40,7 +40,7 @@ body:
   - type: textarea
     id: solution
     attributes:
-      label: 描述您想要的解决方案
+      label: 您想要的解决方案
       description: 请说明您希望使用什么样的方法解决上述问题。
     validations:
       required: true
@@ -48,7 +48,7 @@ body:
   - type: textarea
     id: alternatives
     attributes:
-      label: 描述您考虑过的替代方案
+      label: 您考虑过的替代方案
       description: 除了上述方法以外，您还考虑过哪些其他的实现方式？
 
   - type: textarea
@@ -63,4 +63,4 @@ body:
     id: context
     attributes:
       label: 额外补充
-      description: 还有什么要补充的吗？在此处添加相关的任何其他上下文或截图，或者你觉得有帮助的信息。
+      description: 还有什么要补充的吗？在此处添加相关的任何其他上下文或截图，或者您觉得有帮助的信息。
