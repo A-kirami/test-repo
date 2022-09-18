@@ -7,7 +7,7 @@ body:
     attributes:
       value: |
         ## 注意事项
-        [GitHub Issues](../issues)专门用于错误报告和功能需求，这意味着我们不接受使用问题。如果您打开的问题不符合要求，它将会被无条件关闭。
+        [GitHub Issues](../issues) 专门用于错误报告和功能需求，这意味着我们不接受使用问题。如果您打开的问题不符合要求，它将会被无条件关闭。
 
         有关使用问题，请通过以下方法：
         - 阅读文档以解决
@@ -29,7 +29,7 @@ body:
           required: true
         - label: 我已使用最新版本测试过，确定问题依旧存在。
           required: true
-        - label: 我确定此项目的[ GitHub Issues ](../issues)中没有相同或相似的问题。
+        - label: 我确定此项目的 [GitHub Issues](../issues) 中没有相同或相似的问题。
           required: true
         - label: 我确定这是此项目的问题，而不是正在使用的其他东西。
           required: true
