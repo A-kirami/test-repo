@@ -7,7 +7,7 @@ version: 2.1
 orbs:
   python: circleci/python@2.1.0
   codecov: codecov/codecov@3.2.3
-  codacy: codacy/coverage-reporter@13.10.14
+  codacy: codacy/coverage-reporter@13.13.2
   deepsource: deepsource/test-coverage@1.1.0
 
 # Define a job to be invoked later in a workflow.
