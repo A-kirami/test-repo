@@ -1,8 +1,6 @@
-name-template: "Test v$RESOLVED_VERSION"
-tag-template: "v$RESOLVED_VERSION"
 template: $CHANGES
 category-template: "### $TITLE"
-change-template: "- $TITLE ([#$NUMBER]($URL)) @$AUTHOR"
+change-template: "- [#$NUMBER]($URL) $TITLE @$AUTHOR"
 change-title-escapes: '\<&'
 exclude-labels:
   - "dependencies"
