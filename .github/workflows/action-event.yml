@@ -1,0 +1,28 @@
+name: ActionEvent
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  action-event:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Output Event
+      run: |
+        echo "Event: ${{ github.event_name }}"
+        echo "Ref: ${{ github.ref }}"
+        echo "SHA: ${{ github.sha }}"
+        echo "Actor: ${{ github.actor }}"
+        echo "Repository: ${{ github.repository }}"
+        echo "Workflow: ${{ github.workflow }}"
+        echo "Action: ${{ github.action }}"
+        echo "Event Path: ${{ github.event_path }}"
+        echo "Event: ${{ toJson(github.event) }}"
